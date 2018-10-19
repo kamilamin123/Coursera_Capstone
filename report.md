@@ -55,5 +55,5 @@ As example for quick service restaurant that have drive-thru. they need to have 
 This model provides a tool that will help retail business owners to decide where their next retail expansion neighborhood, without understanding the model and the dimensions used for clustering and without associate he industry practice this could lead to total failure. 
 
 
- [githup code ink]( https://github.com/kamilamin123/Coursera_Capstone/blob/master/Toronto%20clustering%20pedistranian%20clustering.ipynb) 
+ [githup code link]( https://github.com/kamilamin123/Coursera_Capstone/blob/master/Toronto%20clustering%20pedistranian%20clustering.ipynb) 
 kamilAmin 

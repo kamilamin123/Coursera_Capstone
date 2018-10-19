@@ -1,8 +1,8 @@
 # Coursera Capstone
 # Toronto neighborhood classification
 ## Introduction
-this project intended to use geospatial analysis in Toronto city to cluster the neighborhood of Toronto to take decision where to open new branch for retail based on previous success in one of Toronto neighborhood. The main problem for retail is accessibility. Some retails thrive by locating near each other and some retails prefer areas where there is high pedestrian footage or high vehicle traffic density.
-Throughout this project we tried to cluster Toronto neighborhood by the category of retails and entrainment facility in the neighborhood combined with the vehicles and pedestrians’ traffic in that neighborhood using ten different clusters. So, the business owners from the area where direct competitors achieve success or in neighborhood where they achieved success before they can choose new places to expand in the city from the same cluster. 
+this project intended to use geospatial analysis in the city ofToronto to cluster the neighborhood of Toronto to take decision where to open new branch for retail based on previous success in one of Toronto neighborhood. The main problem for retail is accessibility. Some retails thrive by locating near each other and some retails prefer areas where there is high pedestrian footage or high vehicle traffic density.
+Throughout this project we tried to cluster Toronto neighborhood by the category of retails and entertainment facility in the neighborhood combined with the vehicles and pedestrians’ traffic in that neighborhood using ten different clusters. So, the business owners from the area where direct competitors achieve success or in neighborhood where they achieved success before they can choose new places to expand in the city from the same cluster. 
 ## Data
  First of all we need to have neighborhood geographical boundaries so we can analyze defined unique neighborhood and to find the data we used Toronto[open data portal]( https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#a45bd45a-ede8-730e-1abc-93105b2c439f)and I came across shape file that have the boundaries in polygon with the neighborhood name and neighborhood ID.
 To get an idea of the Data this is geo dataframe header
@@ -35,16 +35,16 @@ I started with the boundaries of Toronto because it gives us the definition of t
 After we assigned the point we are ready to get the data from the foursquare API, the problem we are facing is a little bit different  because explore function takes longitude, latitude and radius to draw circle and provide  all the venues inside that circle but the neighborhood s polygon , so the output of venues  could provide mixed venues assigned to wrong neighborhood[figure3](#figure3), to solve this problem we filtered and reassigned venues to neighborhood using shapley. And sed data cleaning so we solve our problem.
 To add more data we used point of interest data from the open Data portal for[the city of Toronto]( https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#7b9deecd-a51a-3485-5e3d-94f27cc8b7d4) as DBf file and we read it using [simpledbf library](https://pypi.org/project/simpledbf) and we appended with the venues DataFrame [figure4](#figure4).
  After compiling the venues data from Foursquare and the point of interest from Toronto open data platform to enrich the data. We started processing the data by using one hot encoding to find  category existed and we grouped by  neighborhood and the mean of the one hot encoding result for the category so we can create  the new DataFrame and display the top 10 venues types  for each neighborhood .
-### Figure10
+### Figure9
 ![]( https://github.com/kamilamin123/Coursera_Capstone/blob/master/images/processed%20Data.png
 "processed Data ")
 To add the traffic dimension to the data solve the problem of finding customers we added the traffic data from [the city of Toronto]( https://www.toronto.ca/city-government/data-research-maps/open-data/open-data-catalogue/#7c8e7c62-7630-8b0f-43ed-a2dfe24aadc9) the data provided for the number of the people crossing intersections and cars for the on peak  8 hour [figure6](#figure6), [figure5](#figure5). To render this data on he neighborhood level we assigned each intersection to neighborhood and we summed the traffic for pedestrians and also for vehicle then we normalized the result using [scikit-learn]( http://scikit-learn.org/stable/) preprocessing attributes so This can guarantee stable convergence of weight and biases.
 Then we will come to the last point clustering using k-mean clustering so we can find similar neighborhood using the dimensions above . 
 ## Results
  After data wrangling and clustering we reconstructed the data to provide us with final Data frame, so we can visualize it and provide it to the targeted retails owners to take informed decision based on those neighborhood clusters. the results we can sum it in 
-### Figure11
+### Figure10
 ![]( https://github.com/kamilamin123/Coursera_Capstone/blob/master/images/clustering%20table.png "processed Data ")
-### Figure12
+### Figure11
 ![]( https://github.com/kamilamin123/Coursera_Capstone/blob/master/images/clustering.png
 "processed Data ")
 
